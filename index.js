@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+
+app.use(express.json()) // for parsing application/json
+
 app.get('/', (req, res) => {
     console.log(req.query);
     const { num1 } = req.query;
@@ -12,7 +15,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', function (req, res) {
-    res.send('GOAT!!!');
+    const strings = req.body.text;
+    res.send('Hello,'+ strings);
   });
 
 app.listen(port, () => {
